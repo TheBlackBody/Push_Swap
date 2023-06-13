@@ -6,7 +6,7 @@
 /*   By: sfernand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 11:42:24 by sfernand          #+#    #+#             */
-/*   Updated: 2023/06/12 16:58:34 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/06/13 16:51:42 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int	main(int argc, char **argv)
 	if (stack.stack_a[0] > stack.stack_a[1])
 	{
 		pb(&stack);
+		pb(&stack);
+		sb(&stack, 0);
 		pa(&stack);
 	}
 	int i = 0;
@@ -71,7 +73,6 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	i = 0;
-	ft_printf("%i\n", stack.size_a);
 	while (i != stack.size_b)
 	{
 		ft_printf("b[%i] = %i\n", i, stack.stack_b[i]);

@@ -6,7 +6,7 @@
 /*   By: sfernand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 17:39:35 by sfernand          #+#    #+#             */
-/*   Updated: 2023/06/12 16:58:04 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/06/13 16:52:05 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,12 @@ void	pb(t_stack *stack)
 void    add_a(t_stack *stack, int temp)
 {
     int size_a;
-    int i;
 
-    i = 0;
     size_a = stack->size_a;
-    while (i != size_a)
+    while (size_a >= 0)
     {
-        stack->stack_a[i + 1] = stack->stack_a[i];
-        i++;
+        stack->stack_a[size_a] = stack->stack_a[size_a - 1];
+        size_a--;;
     }
     stack->stack_a[0] = temp;
 }

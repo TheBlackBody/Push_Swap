@@ -6,7 +6,7 @@
 #    By: sfernand <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/04 12:15:31 by sfernand          #+#    #+#              #
-#    Updated: 2023/06/12 16:56:14 by sfernand         ###   ########.fr        #
+#    Updated: 2023/06/14 16:59:01 by sfernand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ CFLAGS = -Wall -Wextra -Werror -g3
 AR = ar rcs
 RM = rm -f
 
-PUSH_FILES = main
+PUSH_FILES = main \
+			 ft_simple
 
 PARCING_FILES = ft_check_args
 

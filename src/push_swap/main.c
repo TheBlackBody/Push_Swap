@@ -6,7 +6,7 @@
 /*   By: sfernand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 11:42:24 by sfernand          #+#    #+#             */
-/*   Updated: 2023/06/13 16:51:42 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/06/14 17:48:13 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static void	init(t_stack *stack, int argc, char **argv)
 		i++;
 		n++;
 	}
+	stack->n_args = n;
+	stack->args = args;
 }
 
 int	main(int argc, char **argv)
@@ -59,13 +61,12 @@ int	main(int argc, char **argv)
 	if (ft_check_args(argc, argv) == 0)
 		return (0);
 	init(&stack, argc, argv);
-	if (stack.stack_a[0] > stack.stack_a[1])
-	{
-		pb(&stack);
-		pb(&stack);
-		sb(&stack, 0);
-		pa(&stack);
-	}
+	if (stack.n_args == 2 && stack.stack_a[0] > stack.stack_a[1])
+		sa(&stack, 0);
+	else if (stack.n_args == 3)
+		sort_3(&stack);
+	else if (stack.n_args == 4)
+		sort_4(&stack);
 	int i = 0;
 	while (i != stack.size_a)
 	{

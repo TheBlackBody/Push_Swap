@@ -6,7 +6,7 @@
 /*   By: sfernand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 17:40:26 by sfernand          #+#    #+#             */
-/*   Updated: 2023/06/12 15:21:12 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/06/14 17:43:31 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	rra(t_stack *stack, int rrr)
 
 	i = stack->size_a - 1;
 	temp = stack->stack_a[i];
-	ft_printf("\n%i\n", i);
 	while (i > 0)
 	{
 		stack->stack_a[i] = stack->stack_a[i - 1];
@@ -37,7 +36,6 @@ void    rrb(t_stack *stack, int rrr)
 
     i = stack->size_b - 1;
     temp = stack->stack_b[i];
-    ft_printf("\n%i\n", i);
     while (i > 0)
     {
         stack->stack_b[i] = stack->stack_b[i - 1];

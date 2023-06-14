@@ -6,7 +6,7 @@
 /*   By: sfernand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 11:43:53 by sfernand          #+#    #+#             */
-/*   Updated: 2023/06/12 16:56:06 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/06/14 17:47:03 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,13 @@ typedef struct	s_stack{
 	int	*stack_b;
 	int	size_a;
 	int	size_b;
+	int	n_args;
+	char	**args;
 }				t_stack;
 
+
+void    sort_3(t_stack  *stack);
+void    sort_4(t_stack *stack);
 int		ft_check_args(int argc, char **argv);
 void    sa(t_stack *stack, int ss);
 void    sb(t_stack *stack, int ss);

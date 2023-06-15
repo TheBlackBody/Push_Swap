@@ -6,7 +6,7 @@
 /*   By: sfernand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 12:52:48 by sfernand          #+#    #+#             */
-/*   Updated: 2023/06/14 17:53:52 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/06/15 17:45:08 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,23 @@ void	sort_4(t_stack *stack)
 	int n;
 
 	i = 0;
-	n = 0;
-	while (stack->stack_a[0] < stack->stack_a[1] || 
-			stack->stack_a[0] < stack->stack_a[2] ||
-			stack->stack_a[0] < stack->stack_a[3])
+	n = 1;
+	while (stack->stack_a[0] > stack->stack_a[1] || 
+			stack->stack_a[0] > stack->stack_a[2] ||
+			stack->stack_a[0] > stack->stack_a[3])
 	{
 		ra(stack, 0);
+		n++;
 	}
-	
+	if (stack->stack_a[0] < stack->stack_a[1] &&
+            stack->stack_a[1] < stack->stack_a[2] &&
+            stack->stack_a[2] < stack->stack_a[3])
+		n = 0;
+	if (n >= 1)
+	{
+		pb(stack);
+		sort_3(stack);
+		if (stack->stack_b[0] < stack->stack_a[0])
+			pa(stack);
+	}
 }

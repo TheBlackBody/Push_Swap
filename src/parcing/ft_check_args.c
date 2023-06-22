@@ -6,7 +6,7 @@
 /*   By: sfernand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 16:36:30 by sfernand          #+#    #+#             */
-/*   Updated: 2023/06/09 16:27:19 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/06/22 04:06:54 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,47 @@ static int	ft_num(char *num)
 
 	i = 0;
 	if (num[0] == '-')
-		i++;
+	{
+		ft_printf("Error\n");
+		exit (0);
+	}
 	while (num[i])
 	{
 		if (ft_isdigit(num[i]) == 0)
-			return (0);
+			exit (0);
+		i++;
+	}
+	return (1);
+}
+
+int	ft_check_double(t_stack *stack)
+{
+	int	j;
+	int	i;
+	int	temp;
+	int count;
+
+	j = 0;
+	i = 0;
+	count = 0;
+	while (i != stack->size_a)
+	{
+		temp = stack->stack_a[i];
+		while (j < stack->size_a)
+		{
+			if (stack->stack_a[j] == temp)
+				count++;
+			j++;
+		}
+		if (count > 1)
+		{
+			ft_printf("Error\n");
+			free(stack->stack_a);
+			free(stack->stack_b);
+			exit (0);
+		}
+		count = 0;
+		j = 0;
 		i++;
 	}
 	return (1);
@@ -38,8 +74,7 @@ int	ft_check_args(int argc, char **argv)
 	temp = 0;
 	if (argc == 1)
 	{
-		ft_printf("Error: you can doesn't put int");
-		return (0);
+		exit (0);
 	}
 	if (argc == 2)
 		args = ft_split(argv[1], ' ');
@@ -53,15 +88,20 @@ int	ft_check_args(int argc, char **argv)
 		temp = ft_atoi(args[i]);
 		if (!ft_num(args[i]))
 		{
-			ft_printf("Error: the arguments '%s'  was not integer", args[i]);
-			return (0);
+			ft_printf("Error\n", args[i]);
+			exit (0);
 		}
-		if (temp >= 2147483648 || temp <= -2147483649)
+		if ((int)temp > 2147483647 || (int)temp < -2147483648)
 		{
-			ft_printf("Error: the argument was too longer");
-			return (0);
+			ft_printf("Error\n");
+			exit (0);
 		}
 		i++;
+	}
+	if (i == 1)
+	{
+		ft_printf("Error\n");
+		exit (0);
 	}
 	return (1);
 }

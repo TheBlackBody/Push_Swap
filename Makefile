@@ -6,7 +6,7 @@
 #    By: sfernand <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/04 12:15:31 by sfernand          #+#    #+#              #
-#    Updated: 2023/06/14 16:59:01 by sfernand         ###   ########.fr        #
+#    Updated: 2023/06/21 14:31:59 by sfernand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ AR = ar rcs
 RM = rm -f
 
 PUSH_FILES = main \
-			 ft_simple
+			 ft_simple \
+			 ft_radix
 
 PARCING_FILES = ft_check_args
 

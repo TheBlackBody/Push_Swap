@@ -6,7 +6,7 @@
 /*   By: sfernand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 11:42:24 by sfernand          #+#    #+#             */
-/*   Updated: 2023/06/14 17:48:13 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/06/22 02:09:18 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ static void	init(t_stack *stack, int argc, char **argv)
 	while (args[i])
 	{
 		stack->stack_a[n] = ft_atoi(args[i]);
-		ft_printf("a[%i] = %i\n", n, stack->stack_a[n]);
 		i++;
 		n++;
 	}
+	ft_check_double(stack);
 	stack->n_args = n;
 	stack->args = args;
 }
@@ -67,17 +67,11 @@ int	main(int argc, char **argv)
 		sort_3(&stack);
 	else if (stack.n_args == 4)
 		sort_4(&stack);
-	int i = 0;
-	while (i != stack.size_a)
-	{
-		ft_printf("a[%i] = %i\n", i, stack.stack_a[i]);
-		i++;
-	}
-	i = 0;
-	while (i != stack.size_b)
-	{
-		ft_printf("b[%i] = %i\n", i, stack.stack_b[i]);
-		i++;
-	}
-	return (0);
+	else if (stack.n_args == 5)
+		sort_5(&stack);
+	else if (stack.n_args > 5)
+		radix(&stack);
+	free(stack.stack_a);
+	free(stack.stack_b);
+	exit (0);
 }

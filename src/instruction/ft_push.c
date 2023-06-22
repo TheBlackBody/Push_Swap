@@ -6,7 +6,7 @@
 /*   By: sfernand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 17:39:35 by sfernand          #+#    #+#             */
-/*   Updated: 2023/06/15 16:45:38 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/06/21 23:41:19 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,15 @@
 
 void	add_b(t_stack *stack, int temp)
 {
-	int	size_b;
-	int	i;
+	int size_b;
 
-	i = 0;
-	size_b = stack->size_b;
-	while (i != size_b)
-	{
-		stack->stack_b[i + 1] = stack->stack_b[i];
-		i++;
-	}
-	stack->stack_b[0] = temp;
+    size_b = stack->size_b;
+    while (size_b >= 0)
+    {
+        stack->stack_b[size_b] = stack->stack_b[size_b - 1];
+        size_b--;;
+    }
+    stack->stack_b[0] = temp;
 }
 
 void	pb(t_stack *stack)

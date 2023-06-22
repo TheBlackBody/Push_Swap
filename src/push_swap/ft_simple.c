@@ -6,7 +6,7 @@
 /*   By: sfernand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 12:52:48 by sfernand          #+#    #+#             */
-/*   Updated: 2023/06/15 17:45:08 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/06/22 02:18:06 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,26 @@ void	sort_3(t_stack	*stack)
 	}
 }
 
+void	put_sort_4(t_stack *stack)
+{
+	if (stack->stack_a[3] < stack->stack_a[2] &&
+			stack->stack_a[3] < stack->stack_a[1] &&
+			stack->stack_a[3] < stack->stack_a[0])
+		rra(stack, 0);
+	else
+		ra(stack, 0);
+}
+
 void	sort_4(t_stack *stack)
 {
-	int	i;
 	int n;
 
-	i = 0;
 	n = 1;
 	while (stack->stack_a[0] > stack->stack_a[1] || 
 			stack->stack_a[0] > stack->stack_a[2] ||
 			stack->stack_a[0] > stack->stack_a[3])
 	{
-		ra(stack, 0);
+		put_sort_4(stack);
 		n++;
 	}
 	if (stack->stack_a[0] < stack->stack_a[1] &&
@@ -55,4 +63,42 @@ void	sort_4(t_stack *stack)
 		if (stack->stack_b[0] < stack->stack_a[0])
 			pa(stack);
 	}
+}
+
+void	put_sort_5(t_stack *stack)
+{
+	if (stack->stack_a[4] < stack->stack_a[3] &&
+			stack->stack_a[4] < stack->stack_a[2] &&
+			stack->stack_a[4] < stack->stack_a[1] && 
+			stack->stack_a[4] < stack->stack_a[0])
+		rra(stack, 0);
+	else 
+		ra(stack, 0);
+}
+
+void	sort_5(t_stack *stack)
+{
+	int n;
+
+    n = 1;
+    while (stack->stack_a[0] > stack->stack_a[1] ||
+            stack->stack_a[0] > stack->stack_a[2] ||
+            stack->stack_a[0] > stack->stack_a[3] ||
+			stack->stack_a[0] > stack->stack_a[4])
+    {
+        put_sort_5(stack);
+        n++;
+    }
+    if (stack->stack_a[0] < stack->stack_a[1] &&
+            stack->stack_a[1] < stack->stack_a[2] &&
+            stack->stack_a[2] < stack->stack_a[3] &&
+			stack->stack_a[3] < stack->stack_a[4])
+        n = 0;
+    if (n >= 1)
+    {
+        pb(stack);
+        sort_4(stack);
+        if (stack->stack_b[0] < stack->stack_a[0])
+            pa(stack);
+    }
 }
